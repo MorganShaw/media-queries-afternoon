@@ -1,15 +1,22 @@
 import React, {Component} from 'react';
 import './App.css';
 
-// class App extends Component() {
-  // constructor() {
-  //   super()
-  //   this.state = {
 
-  //   }
-  // }
-function App() {
-  // render (){
+class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      dropDownVisible: false
+    }
+  }
+
+  toggleDropDown = () => {
+    this.setState({
+      dropDownVisible: !this.state.dropDownVisible
+    })
+  }
+
+  render (){
     return (
       <div className="App">
         <div className="welcome-page">
@@ -25,11 +32,21 @@ function App() {
                 <p className="menu-link">TEAM</p>
                 <p className="menu-link">CONTACT</p>
               </div>
-              <div>
-                <img className="hamburger" src="./download.png"/>
-              </div>
+              <button className="menu-btn" onClick={this.toggleDropDown}>MENU &#9776;
+              </button>
             </div>
           </header>
+          {this.state.dropDownVisible ? (
+            <div className="dropdown">
+              <div className="dropdown-box">
+                <p className="drop-link">SERVICES</p>
+                <p className="drop-link">PORTFOLIO</p>
+                <p className="drop-link">ABOUT</p>
+                <p className="drop-link">TEAM</p>
+                <p className="drop-link">CONTACT</p>
+              </div>
+            </div>
+          ) : null}
           <div className="welcome-container">
             <h2 className="welcome-1">Welcome To Our Studio!</h2>
             <h2 className="welcome-2">IT'S NICE TO MEET YOU</h2>
@@ -39,7 +56,7 @@ function App() {
       </div>
     );
 
-  // }
+  }
 }
 
 export default App;
